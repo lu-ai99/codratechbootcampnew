@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Codra-Tech AI Internship 2026</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,400;100,500;100,600;100,700;100,800&amp;family=Readex+Pro:wght@400;600;700&amp;family=Silkscreen&amp;display=swap">
+<style>
+body{margin:0;background:#FFFFFF;color:#333333;font-family:'Archivo',ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth}
+a{color:#333333}a:hover{color:#000000}
+*{box-sizing:border-box}
+::selection{background:#62D270;color:#333333}
+.pix{font-family:'Silkscreen',ui-monospace,monospace;letter-spacing:.02em}
+.ar{font-family:'Readex Pro',system-ui,sans-serif}
+
+@keyframes up{from{opacity:0;transform:translateY(48px)}to{opacity:1;transform:none}}
+@keyframes rise{from{transform:translateY(105%)}to{transform:none}}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@keyframes pxpulse{0%,100%{opacity:.15}50%{opacity:1}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes run{0%{left:0%}100%{left:100%}}
+@keyframes lit{0%,6%{background:#FFFFFF;transform:scale(1)}10%,100%{background:#62D270;transform:scale(1.15)}}
+@keyframes sweep{from{background-size:0% 100%}to{background-size:100% 100%}}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes type{from{width:0}}
+@keyframes pop{0%{transform:scale(.6);opacity:0}70%{transform:scale(1.06)}100%{transform:none;opacity:1}}
+@keyframes open{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+
+.ld{animation:up .9s cubic-bezier(.2,.8,.2,1) both}
+.d1{animation-delay:.1s}.d2{animation-delay:.3s}.d3{animation-delay:.45s}.d4{animation-delay:.6s}.d5{animation-delay:.75s}
+.mask{display:block;overflow:hidden;padding-bottom:.06em}
+.mask>span{display:block;animation:rise 1s cubic-bezier(.2,.8,.2,1) both}
+.mask.m2>span{animation-delay:.12s}
+.mask.m3>span{animation-delay:.24s}
+.caret{display:inline-block;width:.42em;height:.78em;background:#62D270;vertical-align:-.02em;margin-left:.08em;animation:blink 1s steps(1) infinite}
+.float{animation:floaty 5s ease-in-out infinite}
+.px{position:absolute;background:#62D270;animation:pxpulse 3.2s ease-in-out infinite}
+.px.b{animation-delay:.8s}.px.c{animation-delay:1.6s}.px.e{animation-delay:2.4s}
+.marquee{display:flex;width:max-content;animation:marquee 30s linear infinite}
+.hl{background-image:linear-gradient(#333333,#333333);background-repeat:no-repeat;background-size:100% 100%;color:#FFFFFF;padding:0 .14em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.hlg{background-image:linear-gradient(#62D270,#62D270);background-repeat:no-repeat;background-size:100% 100%;color:#333333;padding:0 .14em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.hero .hl{animation:sweep .9s 1s cubic-bezier(.7,0,.2,1) both}
+.track-cursor{position:absolute;top:-30px;margin-left:-8px;animation:run 9s steps(60) infinite}
+.stop-dot{animation:lit 9s steps(1) infinite}
+.s1{animation-delay:0s}.s2{animation-delay:1.8s}.s3{animation-delay:3.6s}.s4{animation-delay:5.4s}.s5{animation-delay:7.2s}.s6{animation-delay:8.6s}
+.stop{transition:transform .2s}
+.stop:hover{transform:translateY(-4px)}
+.card{transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s}
+.card:hover{transform:translate(-6px,-6px);box-shadow:8px 8px 0 #333333}
+.card-g:hover{box-shadow:8px 8px 0 #62D270}
+.btn{transition:transform .2s,box-shadow .2s;text-decoration:none}
+.btn:hover{transform:translate(-3px,-3px);box-shadow:5px 5px 0 #333333;color:#333333}
+.btn-d:hover{box-shadow:5px 5px 0 #62D270;color:#FFFFFF}
+.acc{transition:background .2s}
+.acc:hover{background:#F1FAF2}
+.chev{transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.panel{animation:open .45s cubic-bezier(.2,.8,.2,1) both}
+.typed{display:inline-block;overflow:hidden;vertical-align:bottom;animation:type 1.2s .2s steps(40) both;max-width:100%}
+.spk .ph{transition:background .25s}
+.spk:hover .ph{background:#62D270}
+.ph img{transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.spk:hover .ph img{transform:scale(1.05)}
+.navl{display:flex}
+
+@supports (animation-timeline: view()){
+  .rv{animation:up linear both;animation-timeline:view();animation-range:entry 0% cover 28%}
+  .rv-hl{animation:sweep linear both;animation-timeline:view();animation-range:entry 20% cover 40%}
+  .rv-pop{animation:pop linear both;animation-timeline:view();animation-range:entry 0% cover 30%}
+  .prog{transform-origin:left center;animation:grow linear both;animation-timeline:scroll(root block)}
+}
+@media (max-width: 860px){
+  .navl{display:none}
+  .track,.track-cursor{display:none}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .px{opacity:.5}
+}
+</style>
+</helmet>
+
+<div id="top" style="position: relative; min-height: 100%; overflow-x: clip; background: #FFFFFF">
+
+<!-- ============ NAV ============ -->
+<header style="position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.86); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid #E4EFE6">
+<div style="max-width: 1280px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px">
+<a href="#top" aria-label="Codra-Tech home" style="display: flex; align-items: center; gap: 12px; text-decoration: none">
+<img src="./assets/6472d02194c69317dee94f1b1be475bd.png" alt="Codra Tech" style="height: 44px; width: auto; display: block">
+<span class="pix" style="font-size: 12px; color: #333333; border-left: 1px solid #CFE3D2; padding-left: 12px">AI Internship · 2026</span>
+</a>
+<nav class="navl" aria-label="Sections" style="align-items: center; gap: 28px; font-size: 14px; font-weight: 500">
+<a href="#journey" style="text-decoration: none">The Journey</a>
+<a href="#curriculum" style="text-decoration: none">Curriculum</a>
+<a href="#operators" style="text-decoration: none">Operators</a>
+<a href="#why" style="text-decoration: none">Why this</a>
+</nav>
+</div>
+<div aria-hidden="true" style="height: 3px; background: #EEF6EF"><div class="prog" style="height: 3px; width: 100%; background: #62D270"></div></div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" style="position: relative; padding: 72px 24px 0; background: radial-gradient(900px 520px at 100% 0%, #CDEFD2 0%, rgba(205,239,210,0) 70%), radial-gradient(800px 500px at 0% 100%, #DDF5E0 0%, rgba(221,245,224,0) 70%), #FFFFFF">
+<div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none">
+<div class="px" style="top: 120px; right: 8%; width: 56px; height: 56px"></div>
+<div class="px b" style="top: 176px; right: calc(8% + 56px); width: 56px; height: 56px"></div>
+<div class="px c" style="top: 64px; right: calc(8% + 112px); width: 28px; height: 28px"></div>
+<div class="px e" style="top: 260px; right: 3%; width: 28px; height: 28px"></div>
+<div class="px b" style="top: 330px; right: 16%; width: 20px; height: 20px; background: #333333"></div>
+<div class="px c" style="top: 560px; left: 2%; width: 36px; height: 36px"></div>
+<div class="px" style="top: 596px; left: calc(2% + 36px); width: 36px; height: 36px"></div>
+</div>
+
+<div style="position: relative; max-width: 1280px; margin: 0 auto">
+<div class="ld" style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px">
+<span class="pix" style="font-size: 12px; padding: 7px 12px; background: #333333; color: #62D270">AI Internship · 2026</span>
+</div>
+
+<h1 style="margin: 32px 0 0; font-weight: 800; font-size: clamp(54px, 9.6vw, 148px); line-height: .9; letter-spacing: -0.045em">
+<span class="mask"><span>From Curious</span></span>
+<span class="mask m2"><span>to Capable,</span></span>
+<span class="mask m3"><span><span class="hl">in Two Weeks</span><span class="caret" aria-hidden="true"></span></span></span>
+</h1>
+
+<div style="margin-top: 40px; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 40px">
+<p class="ld d3" style="flex: 1 1 520px; max-width: 700px; margin: 0; font-size: clamp(18px, 1.6vw, 21px); line-height: 1.6; color: #3D3D3D; text-wrap: pretty">This isn't a lecture series on AI. It's six sessions where real operators — a CFO, a marketing lead, a sales director, a builder shipping an actual MVP — show you how they use it, in the room, in real time. <strong style="color: #333333">You walk in curious. You walk out with a pitch.</strong></p>
+<div class="ld d4 float" style="flex: 0 1 400px; display: flex; flex-direction: column; align-items: flex-end; gap: 12px">
+<p class="ar" lang="ar" dir="rtl" style="margin: 0; font-size: clamp(28px, 3vw, 42px); font-weight: 700; line-height: 1.3"><span class="hl">قدراتك</span> تبدأ من هنا</p>
+<p class="pix" style="margin: 0; font-size: 11px; color: #4A4A4A; text-align: right">Your capability starts here.</p>
+</div>
+</div>
+
+<div class="ld d4" style="margin-top: 36px; display: flex; flex-wrap: wrap; gap: 14px">
+<a class="btn" href="#journey" style="display: inline-flex; align-items: center; gap: 12px; min-height: 56px; padding: 0 28px; background: #62D270; color: #333333; font-weight: 700; font-size: 17px; border: 2px solid #333333">See the journey <span aria-hidden="true">→</span></a>
+</div>
+
+<ul class="ld d5" style="margin: 64px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); border-top: 2px solid #333333">
+<li style="padding: 20px 20px 24px 0; display: flex; align-items: center; gap: 14px"><span aria-hidden="true" style="display: grid; grid-template-columns: repeat(2, 9px); gap: 0; flex: 0 0 auto"><span style="width: 9px; height: 9px; background: #62D270"></span><span style="width: 9px; height: 9px; background: #333333"></span><span style="width: 9px; height: 9px; background: #333333"></span><span style="width: 9px; height: 9px; background: #62D270"></span></span><span style="font-size: 19px; font-weight: 700">Real operators, not theory</span></li>
+<li style="padding: 20px 20px 24px 0; display: flex; align-items: center; gap: 14px"><span aria-hidden="true" style="display: grid; grid-template-columns: repeat(2, 9px); gap: 0; flex: 0 0 auto"><span style="width: 9px; height: 9px; background: #62D270"></span><span style="width: 9px; height: 9px; background: #333333"></span><span style="width: 9px; height: 9px; background: #333333"></span><span style="width: 9px; height: 9px; background: #62D270"></span></span><span style="font-size: 19px; font-weight: 700">6 sessions, zero fluff</span></li>
+<li style="padding: 20px 20px 24px 0; display: flex; align-items: center; gap: 14px"><span aria-hidden="true" style="display: grid; grid-template-columns: repeat(2, 9px); gap: 0; flex: 0 0 auto"><span style="width: 9px; height: 9px; background: #62D270"></span><span style="width: 9px; height: 9px; background: #333333"></span><span style="width: 9px; height: 9px; background: #333333"></span><span style="width: 9px; height: 9px; background: #62D270"></span></span><span style="font-size: 19px; font-weight: 700">90 min max</span></li>
+<li style="padding: 20px 20px 24px 0; display: flex; align-items: center; gap: 14px"><span aria-hidden="true" style="display: grid; grid-template-columns: repeat(2, 9px); gap: 0; flex: 0 0 auto"><span style="width: 9px; height: 9px; background: #62D270"></span><span style="width: 9px; height: 9px; background: #333333"></span><span style="width: 9px; height: 9px; background: #333333"></span><span style="width: 9px; height: 9px; background: #62D270"></span></span><span style="font-size: 19px; font-weight: 700">2 weeks, start to pitch</span></li>
+</ul>
+</div>
+
+<div aria-hidden="true" style="margin: 0 -24px; background: #62D270; border-top: 2px solid #333333; border-bottom: 2px solid #333333; overflow: hidden; padding: 22px 0">
+<div class="marquee" style="gap: 56px; align-items: center">
+<img src="./assets/5a849863878f4f07c2ec6f4dd838d3ed.png" alt="" style="height: 56px; width: auto; display: block">
+<span style="font-size: 40px; font-weight: 800; letter-spacing: -0.03em; white-space: nowrap">Where capability becomes technology</span>
+<span style="width: 18px; height: 18px; background: #333333; flex: 0 0 auto"></span>
+<span style="font-size: 40px; font-weight: 800; letter-spacing: -0.03em; white-space: nowrap">Real operators, not theory</span>
+<span style="width: 18px; height: 18px; background: #333333; flex: 0 0 auto"></span>
+<span style="font-size: 40px; font-weight: 800; letter-spacing: -0.03em; white-space: nowrap">Two weeks, one pitch</span>
+<span style="width: 18px; height: 18px; background: #333333; flex: 0 0 auto"></span>
+<img src="./assets/5a849863878f4f07c2ec6f4dd838d3ed.png" alt="" style="height: 56px; width: auto; display: block">
+<span style="font-size: 40px; font-weight: 800; letter-spacing: -0.03em; white-space: nowrap">Where capability becomes technology</span>
+<span style="width: 18px; height: 18px; background: #333333; flex: 0 0 auto"></span>
+<span style="font-size: 40px; font-weight: 800; letter-spacing: -0.03em; white-space: nowrap">Real operators, not theory</span>
+<span style="width: 18px; height: 18px; background: #333333; flex: 0 0 auto"></span>
+<span style="font-size: 40px; font-weight: 800; letter-spacing: -0.03em; white-space: nowrap">Two weeks, one pitch</span>
+<span style="width: 18px; height: 18px; background: #333333; flex: 0 0 auto"></span>
+</div>
+</div>
+</section>
+
+<!-- ============ JOURNEY ============ -->
+<section id="journey" style="padding: 120px 24px 110px; background: #FFFFFF">
+<div style="max-width: 1280px; margin: 0 auto">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px">
+<div class="rv">
+<p class="pix" style="margin: 0 0 14px; font-size: 13px">// The journey</p>
+<h2 style="margin: 0; font-size: clamp(38px, 5vw, 76px); line-height: .98; letter-spacing: -0.04em; font-weight: 800; max-width: 900px">Day one, you're a student. <span class="hlg rv-hl">Day fourteen, you're pitching.</span></h2>
+</div>
+<p class="rv" style="margin: 0; max-width: 340px; font-size: 17px; line-height: 1.55; color: #4A4A4A">Every stage builds toward the next — nothing here is filler. Tap a stage to jump to its session.</p>
+</div>
+
+<div style="position: relative; margin-top: 88px">
+<div class="track" aria-hidden="true" style="position: absolute; left: 8.3%; right: 8.3%; top: 13px; height: 4px; background-image: linear-gradient(90deg, #333333 50%, rgba(0,0,0,0) 0); background-size: 16px 4px"></div>
+<div class="track" aria-hidden="true" style="position: absolute; left: 8.3%; right: 8.3%; top: 13px; height: 0">
+<svg class="track-cursor" width="24" height="34" viewBox="0 0 12 17" shape-rendering="crispEdges" aria-hidden="true"><path fill="#333333" d="M0 0h1v14h-1zM1 1h1v1h-1zM2 2h1v1h-1zM3 3h1v1h-1zM4 4h1v1h-1zM5 5h1v1h-1zM6 6h1v1h-1zM7 7h1v1h-1zM8 8h1v1h-1zM9 9h1v1h-1zM6 10h5v1h-5zM3 11h1v1h-1zM6 11h1v1h-1zM2 12h1v1h-1zM4 12h1v1h-1zM7 12h1v1h-1zM1 13h1v1h-1zM4 13h1v1h-1zM7 13h1v1h-1zM5 14h1v1h-1zM8 14h1v1h-1zM5 15h1v1h-1zM8 15h1v1h-1zM6 16h2v1h-2z"></path><path fill="#62D270" d="M1 2h1v11h-1zM2 3h1v9h-1zM3 4h1v7h-1zM4 5h1v7h-1zM5 6h1v8h-1zM6 7h1v3h-1zM7 8h1v2h-1zM8 9h1v1h-1zM5 12h1v2h-1zM6 12h1v4h-1zM7 14h1v2h-1z"></path></svg>
+</div>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(160px, 100%), 1fr)); gap: 36px 16px">
+<li class="rv"><a class="stop" href="#curriculum" onClick="{{go0}}" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; text-decoration: none"><span class="stop-dot s1" style="width: 30px; height: 30px; border: 3px solid #333333; background: #62D270; display: block"></span><span class="pix" style="font-size: 11px">Stage 01</span><span style="font-weight: 800; font-size: 24px; letter-spacing: -0.02em">Onboard</span><span style="font-size: 15px; color: #4A4A4A; line-height: 1.45">Meet AI, drop the myths</span></a></li>
+<li class="rv"><a class="stop" href="#curriculum" onClick="{{go1}}" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; text-decoration: none"><span class="stop-dot s2" style="width: 30px; height: 30px; border: 3px solid #333333; background: #FFFFFF; display: block"></span><span class="pix" style="font-size: 11px">Stage 02</span><span style="font-weight: 800; font-size: 24px; letter-spacing: -0.02em">Equip</span><span style="font-size: 15px; color: #4A4A4A; line-height: 1.45">Build your prompt toolkit</span></a></li>
+<li class="rv"><a class="stop" href="#curriculum" onClick="{{go2}}" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; text-decoration: none"><span class="stop-dot s3" style="width: 30px; height: 30px; border: 3px solid #333333; background: #FFFFFF; display: block"></span><span class="pix" style="font-size: 11px">Stage 03</span><span style="font-weight: 800; font-size: 24px; letter-spacing: -0.02em">Witness</span><span style="font-size: 15px; color: #4A4A4A; line-height: 1.45">Operators build &amp; decide live</span></a></li>
+<li class="rv"><a class="stop" href="#curriculum" onClick="{{go3}}" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; text-decoration: none"><span class="stop-dot s4" style="width: 30px; height: 30px; border: 3px solid #333333; background: #FFFFFF; display: block"></span><span class="pix" style="font-size: 11px">Stage 04</span><span style="font-weight: 800; font-size: 24px; letter-spacing: -0.02em">Apply</span><span style="font-size: 15px; color: #4A4A4A; line-height: 1.45">Market, create, sell with AI</span></a></li>
+<li class="rv"><a class="stop" href="#curriculum" onClick="{{go4}}" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; text-decoration: none"><span class="stop-dot s5" style="width: 30px; height: 30px; border: 3px solid #333333; background: #FFFFFF; display: block"></span><span class="pix" style="font-size: 11px">Stage 05</span><span style="font-weight: 800; font-size: 24px; letter-spacing: -0.02em">Prepare</span><span style="font-size: 15px; color: #4A4A4A; line-height: 1.45">Shape your own pitch</span></a></li>
+<li class="rv"><a class="stop" href="#curriculum" onClick="{{go5}}" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; text-decoration: none"><span class="stop-dot s6" style="width: 30px; height: 30px; border: 3px solid #333333; background: #FFFFFF; display: block"></span><span class="pix" style="font-size: 11px">Stage 06</span><span style="font-weight: 800; font-size: 24px; letter-spacing: -0.02em">Graduate</span><span style="font-size: 15px; color: #4A4A4A; line-height: 1.45">Pitch live, maybe get funded</span></a></li>
+</ol>
+</div>
+</div>
+</section>
+
+<!-- ============ CURRICULUM ============ -->
+<section id="curriculum" style="padding: 120px 24px; background: radial-gradient(700px 420px at 100% 100%, #DDF5E0 0%, rgba(221,245,224,0) 70%), #FFFFFF; border-top: 2px solid #333333">
+<div style="max-width: 1280px; margin: 0 auto">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 28px">
+<div class="rv" style="flex: 1 1 560px">
+<p class="pix" style="margin: 0 0 14px; font-size: 13px">// The curriculum</p>
+<h2 style="margin: 0; font-size: clamp(38px, 5vw, 76px); line-height: .98; letter-spacing: -0.04em; font-weight: 800">Six sessions. <span class="hl rv-hl">Tap any to open it up.</span></h2>
+</div>
+<p class="rv" style="flex: 1 1 360px; max-width: 460px; margin: 0; font-size: 17px; line-height: 1.6; color: #4A4A4A">Every session runs 90 minutes max, three times a week. From Session 3 on, the instructor shares the room with people who use AI on the job every day — see exactly who, and what you'll leave with.</p>
+</div>
+
+<!-- WEEK 1 -->
+<div class="rv" style="margin-top: 64px; display: flex; align-items: center; gap: 16px">
+<span class="pix" style="font-size: 13px; padding: 8px 14px; background: #333333; color: #62D270">Week 1</span>
+<span aria-hidden="true" style="flex: 1 1 auto; height: 2px; background: #333333"></span>
+</div>
+<div style="margin-top: 18px; display: flex; flex-direction: column; gap: 14px">
+
+<article class="rv" style="border: 2px solid #333333; background: {{bg0}}">
+<button type="button" class="acc" onClick="{{t0}}" aria-expanded="{{ex0}}" style="width: 100%; min-height: 96px; padding: 22px 28px; border: 0; background: rgba(0,0,0,0); font: inherit; color: #333333; text-align: left; cursor: pointer; display: flex; align-items: center; gap: 24px">
+<span style="font-size: clamp(44px, 4.6vw, 64px); font-weight: 800; letter-spacing: -0.05em; line-height: 1; min-width: 56px">1</span>
+<span style="flex: 1 1 auto; display: flex; flex-direction: column; gap: 6px; min-width: 0"><span class="pix" style="font-size: 11px">Session 1 · ≈ 90 min</span><span style="font-size: clamp(20px, 2.2vw, 30px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15">Welcome to the Age of AI</span></span>
+<svg class="chev" aria-hidden="true" width="28" height="28" viewBox="0 0 7 7" shape-rendering="crispEdges" style="flex: 0 0 auto; transform: rotate({{r0}})"><path fill="#333333" d="M0 2h1v1h-1zM1 3h1v1h-1zM2 4h1v1h-1zM3 5h1v1h-1zM4 4h1v1h-1zM5 3h1v1h-1zM6 2h1v1h-1z"></path></svg>
+</button>
+<sc-if value="{{o0}}" hint-placeholder-val="{{ true }}">
+<div class="panel" style="padding: 0 28px 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #3D3D3D">A foundational look at what AI actually is and how it is reshaping work across every field — the vocabulary you will use for the rest of the program.</p>
+<div style="display: flex; flex-direction: column; gap: 8px"><span class="pix" style="font-size: 11px">Led by</span><div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="padding: 8px 12px; border: 2px solid #333333; background: #FFFFFF; font-size: 15px; font-weight: 600">Eng. Ali Ramadan — Instructor · ≈ 90 min</span></div></div>
+</div>
+<div style="background: #333333; color: #FFFFFF; padding: 22px 24px; display: flex; flex-direction: column; gap: 10px; align-self: start"><span class="pix" style="font-size: 11px; color: #62D270">&gt; What you walk away with</span><span class="typed" style="font-size: 17px; line-height: 1.5; font-weight: 600">A clear, realistic picture of what AI can and cannot do today, and the shared vocabulary the rest of the program builds on.</span></div>
+</div>
+</sc-if>
+</article>
+
+<article class="rv" style="border: 2px solid #333333; background: {{bg1}}">
+<button type="button" class="acc" onClick="{{t1}}" aria-expanded="{{ex1}}" style="width: 100%; min-height: 96px; padding: 22px 28px; border: 0; background: rgba(0,0,0,0); font: inherit; color: #333333; text-align: left; cursor: pointer; display: flex; align-items: center; gap: 24px">
+<span style="font-size: clamp(44px, 4.6vw, 64px); font-weight: 800; letter-spacing: -0.05em; line-height: 1; min-width: 56px">2</span>
+<span style="flex: 1 1 auto; display: flex; flex-direction: column; gap: 6px; min-width: 0"><span class="pix" style="font-size: 11px">Session 2 · 90 min</span><span style="font-size: clamp(20px, 2.2vw, 30px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15">Speak AI's Language: Prompt Engineering</span></span>
+<svg class="chev" aria-hidden="true" width="28" height="28" viewBox="0 0 7 7" shape-rendering="crispEdges" style="flex: 0 0 auto; transform: rotate({{r1}})"><path fill="#333333" d="M0 2h1v1h-1zM1 3h1v1h-1zM2 4h1v1h-1zM3 5h1v1h-1zM4 4h1v1h-1zM5 3h1v1h-1zM6 2h1v1h-1z"></path></svg>
+</button>
+<sc-if value="{{o1}}" hint-placeholder-val="{{ false }}">
+<div class="panel" style="padding: 0 28px 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #3D3D3D">Move from guessing at prompts to a repeatable 6-part prompt structure — role, context, task, format, constraints, examples.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 6px"><span class="pix" style="font-size: 11px; padding: 6px 9px; background: #62D270">Role</span><span class="pix" style="font-size: 11px; padding: 6px 9px; background: #62D270">Context</span><span class="pix" style="font-size: 11px; padding: 6px 9px; background: #62D270">Task</span><span class="pix" style="font-size: 11px; padding: 6px 9px; background: #62D270">Format</span><span class="pix" style="font-size: 11px; padding: 6px 9px; background: #62D270">Constraints</span><span class="pix" style="font-size: 11px; padding: 6px 9px; background: #62D270">Examples</span></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><span class="pix" style="font-size: 11px">Led by</span><div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="padding: 8px 12px; border: 2px solid #333333; background: #FFFFFF; font-size: 15px; font-weight: 600">Eng. Ali Ramadan — Instructor · 90 min</span></div></div>
+</div>
+<div style="background: #333333; color: #FFFFFF; padding: 22px 24px; display: flex; flex-direction: column; gap: 10px; align-self: start"><span class="pix" style="font-size: 11px; color: #62D270">&gt; What you walk away with</span><span class="typed" style="font-size: 17px; line-height: 1.5; font-weight: 600">Your own Prompt Vault — a personal library of reusable prompts you keep using long after the program ends.</span></div>
+</div>
+</sc-if>
+</article>
+
+<article class="rv" style="border: 2px solid #333333; background: {{bg2}}">
+<button type="button" class="acc" onClick="{{t2}}" aria-expanded="{{ex2}}" style="width: 100%; min-height: 96px; padding: 22px 28px; border: 0; background: rgba(0,0,0,0); font: inherit; color: #333333; text-align: left; cursor: pointer; display: flex; align-items: center; gap: 24px">
+<span style="font-size: clamp(44px, 4.6vw, 64px); font-weight: 800; letter-spacing: -0.05em; line-height: 1; min-width: 56px">3</span>
+<span style="flex: 1 1 auto; display: flex; flex-direction: column; gap: 6px; min-width: 0"><span style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center"><span class="pix" style="font-size: 11px">Session 3 · 120 min</span><span class="pix" style="font-size: 10px; padding: 3px 7px; background: #333333; color: #62D270">Guests begin</span></span><span style="font-size: clamp(20px, 2.2vw, 30px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15">From Idea to Execution: Utilization &amp; Framework</span></span>
+<svg class="chev" aria-hidden="true" width="28" height="28" viewBox="0 0 7 7" shape-rendering="crispEdges" style="flex: 0 0 auto; transform: rotate({{r2}})"><path fill="#333333" d="M0 2h1v1h-1zM1 3h1v1h-1zM2 4h1v1h-1zM3 5h1v1h-1zM4 4h1v1h-1zM5 3h1v1h-1zM6 2h1v1h-1z"></path></svg>
+</button>
+<sc-if value="{{o2}}" hint-placeholder-val="{{ false }}">
+<div class="panel" style="padding: 0 28px 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #3D3D3D">Eng. Ali Ramadan builds an actual MVP — the technical build of a SaaS product — live, in conversation with the instructor. Then: how the best founders and finance leaders really use AI day to day.</p>
+<div style="display: flex; flex-direction: column; gap: 8px"><span class="pix" style="font-size: 11px">Led by</span><div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="padding: 8px 12px; border: 2px solid #333333; background: #FFFFFF; font-size: 15px; font-weight: 600">Eng. Ali Ramadan — MVP Build · 60 min</span><span style="padding: 8px 12px; border: 2px solid #333333; background: #FFFFFF; font-size: 15px; font-weight: 600">Dr. Amira — Finance &amp; HR · 30 min</span><span style="padding: 8px 12px; border: 2px solid #333333; background: #FFFFFF; font-size: 15px; font-weight: 600">Mr. Tamer — CFO · 30 min</span></div></div>
+</div>
+<div style="background: #333333; color: #FFFFFF; padding: 22px 24px; display: flex; flex-direction: column; gap: 10px; align-self: start"><span class="pix" style="font-size: 11px; color: #62D270">&gt; What you walk away with</span><span class="typed" style="font-size: 17px; line-height: 1.5; font-weight: 600">A working sense of how a SaaS MVP actually gets built with AI, plus a finance/HR lens on where AI earns its keep inside a real company.</span></div>
+</div>
+</sc-if>
+</article>
+</div>
+
+<!-- WEEK 2 -->
+<div class="rv" style="margin-top: 56px; display: flex; align-items: center; gap: 16px">
+<span class="pix" style="font-size: 13px; padding: 8px 14px; background: #333333; color: #62D270">Week 2</span>
+<span aria-hidden="true" style="flex: 1 1 auto; height: 2px; background: #333333"></span>
+</div>
+<div style="margin-top: 18px; display: flex; flex-direction: column; gap: 14px">
+
+<article class="rv" style="border: 2px solid #333333; background: {{bg3}}">
+<button type="button" class="acc" onClick="{{t3}}" aria-expanded="{{ex3}}" style="width: 100%; min-height: 96px; padding: 22px 28px; border: 0; background: rgba(0,0,0,0); font: inherit; color: #333333; text-align: left; cursor: pointer; display: flex; align-items: center; gap: 24px">
+<span style="font-size: clamp(44px, 4.6vw, 64px); font-weight: 800; letter-spacing: -0.05em; line-height: 1; min-width: 56px">4</span>
+<span style="flex: 1 1 auto; display: flex; flex-direction: column; gap: 6px; min-width: 0"><span class="pix" style="font-size: 11px">Session 4 · 150 min</span><span style="font-size: clamp(20px, 2.2vw, 30px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15">AI Meets the Market: Marketing, Creative &amp; Sales</span></span>
+<svg class="chev" aria-hidden="true" width="28" height="28" viewBox="0 0 7 7" shape-rendering="crispEdges" style="flex: 0 0 auto; transform: rotate({{r3}})"><path fill="#333333" d="M0 2h1v1h-1zM1 3h1v1h-1zM2 4h1v1h-1zM3 5h1v1h-1zM4 4h1v1h-1zM5 3h1v1h-1zM6 2h1v1h-1z"></path></svg>
+</button>
+<sc-if value="{{o3}}" hint-placeholder-val="{{ false }}">
+<div class="panel" style="padding: 0 28px 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #3D3D3D">The proven process behind better marketing decisions, how creative direction holds up when AI speeds up production, and how to sell effectively — told by the people doing it day to day.</p>
+<div style="display: flex; flex-direction: column; gap: 8px"><span class="pix" style="font-size: 11px">Led by</span><div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="padding: 8px 12px; border: 2px solid #333333; background: #FFFFFF; font-size: 15px; font-weight: 600">Eng. Ali Ramadan — Instructor · 30 min</span><span style="padding: 8px 12px; border: 2px solid #333333; background: #FFFFFF; font-size: 15px; font-weight: 600">Mohammed Albanna — Marketing Lead · 30 min</span><span style="padding: 8px 12px; border: 2px solid #333333; background: #FFFFFF; font-size: 15px; font-weight: 600">Anas Elfiky — Creative Director · 45 min</span><span style="padding: 8px 12px; border: 2px solid #333333; background: #FFFFFF; font-size: 15px; font-weight: 600">Kareem Gabr — Media Production · 45 min</span></div></div>
+</div>
+<div style="background: #333333; color: #FFFFFF; padding: 22px 24px; display: flex; flex-direction: column; gap: 10px; align-self: start"><span class="pix" style="font-size: 11px; color: #62D270">&gt; What you walk away with</span><span class="typed" style="font-size: 17px; line-height: 1.5; font-weight: 600">A go-to-market framework for your own idea — how you'd market it, shape its creative, and sell it with AI.</span></div>
+</div>
+</sc-if>
+</article>
+
+<article class="rv" style="border: 2px solid #333333; background: {{bg4}}">
+<button type="button" class="acc" onClick="{{t4}}" aria-expanded="{{ex4}}" style="width: 100%; min-height: 96px; padding: 22px 28px; border: 0; background: rgba(0,0,0,0); font: inherit; color: #333333; text-align: left; cursor: pointer; display: flex; align-items: center; gap: 24px">
+<span style="font-size: clamp(44px, 4.6vw, 64px); font-weight: 800; letter-spacing: -0.05em; line-height: 1; min-width: 56px">5</span>
+<span style="flex: 1 1 auto; display: flex; flex-direction: column; gap: 6px; min-width: 0"><span class="pix" style="font-size: 11px">Session 5 · 120 min</span><span style="font-size: clamp(20px, 2.2vw, 30px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15">The Pitch: Winning Over Investors</span></span>
+<svg class="chev" aria-hidden="true" width="28" height="28" viewBox="0 0 7 7" shape-rendering="crispEdges" style="flex: 0 0 auto; transform: rotate({{r4}})"><path fill="#333333" d="M0 2h1v1h-1zM1 3h1v1h-1zM2 4h1v1h-1zM3 5h1v1h-1zM4 4h1v1h-1zM5 3h1v1h-1zM6 2h1v1h-1z"></path></svg>
+</button>
+<sc-if value="{{o4}}" hint-placeholder-val="{{ false }}">
+<div class="panel" style="padding: 0 28px 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #3D3D3D">Turn your project idea into a sharp, structured pitch — problem, solution, value, ask — with hands-on coaching in presentation skills and business English.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 6px"><span class="pix" style="font-size: 11px; padding: 6px 9px; background: #62D270">Problem</span><span class="pix" style="font-size: 11px; padding: 6px 9px; background: #62D270">Solution</span><span class="pix" style="font-size: 11px; padding: 6px 9px; background: #62D270">Value</span><span class="pix" style="font-size: 11px; padding: 6px 9px; background: #62D270">Ask</span></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><span class="pix" style="font-size: 11px">Led by</span><div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="padding: 8px 12px; border: 2px solid #333333; background: #FFFFFF; font-size: 15px; font-weight: 600">Eng. Ali Ramadan — Instructor · 30 min</span><span style="padding: 8px 12px; border: 2px solid #333333; background: #FFFFFF; font-size: 15px; font-weight: 600">Ahmed Ayman — Sales Director · 30 min</span><span style="padding: 8px 12px; border: 2px solid #333333; background: #FFFFFF; font-size: 15px; font-weight: 600">Eng. Mohamed Elhanafy — Pitching &amp; Presentation Skills · 30 min</span><span style="padding: 8px 12px; border: 2px solid #333333; background: #FFFFFF; font-size: 15px; font-weight: 600">Panagiotis Solinaras — Business English · 30 min</span></div></div>
+</div>
+<div style="background: #333333; color: #FFFFFF; padding: 22px 24px; display: flex; flex-direction: column; gap: 10px; align-self: start"><span class="pix" style="font-size: 11px; color: #62D270">&gt; What you walk away with</span><span class="typed" style="font-size: 17px; line-height: 1.5; font-weight: 600">A structured investor pitch for your own idea, rehearsed and ready for the stage.</span></div>
+</div>
+</sc-if>
+</article>
+
+<article class="rv" style="border: 2px solid #333333; background: {{bg5}}">
+<button type="button" class="acc" onClick="{{t5}}" aria-expanded="{{ex5}}" style="width: 100%; min-height: 96px; padding: 22px 28px; border: 0; background: rgba(0,0,0,0); font: inherit; color: #333333; text-align: left; cursor: pointer; display: flex; align-items: center; gap: 24px">
+<span style="font-size: clamp(44px, 4.6vw, 64px); font-weight: 800; letter-spacing: -0.05em; line-height: 1; min-width: 56px">6</span>
+<span style="flex: 1 1 auto; display: flex; flex-direction: column; gap: 6px; min-width: 0"><span style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center"><span class="pix" style="font-size: 11px">Session 6</span><span class="pix" style="font-size: 10px; padding: 3px 7px; background: #333333; color: #62D270">Final session</span></span><span style="font-size: clamp(20px, 2.2vw, 30px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15">Take the Stage: Graduation &amp; Project Pitching</span></span>
+<svg class="chev" aria-hidden="true" width="28" height="28" viewBox="0 0 7 7" shape-rendering="crispEdges" style="flex: 0 0 auto; transform: rotate({{r5}})"><path fill="#333333" d="M0 2h1v1h-1zM1 3h1v1h-1zM2 4h1v1h-1zM3 5h1v1h-1zM4 4h1v1h-1zM5 3h1v1h-1zM6 2h1v1h-1z"></path></svg>
+</button>
+<sc-if value="{{o5}}" hint-placeholder-val="{{ false }}">
+<div class="panel" style="padding: 0 28px 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #3D3D3D">The instructor's closing word, then interns pitch live in front of the room. Madaar may choose the strongest idea to fund with a team and resources.</p>
+<div style="display: flex; flex-direction: column; gap: 8px"><span class="pix" style="font-size: 11px">Led by</span><div style="display: flex; flex-wrap: wrap; gap: 8px"><span style="padding: 8px 12px; border: 2px solid #333333; background: #FFFFFF; font-size: 15px; font-weight: 600">Eng. Ali Ramadan — Instructor</span><span style="padding: 8px 12px; border: 2px solid #333333; background: #FFFFFF; font-size: 15px; font-weight: 600">Eng. Huda Saleh — Project Manager</span><span style="padding: 8px 12px; border: 2px solid #333333; background: #62D270; font-size: 15px; font-weight: 600">Guest of honor: Eng. Muhammad Atef</span><span style="padding: 8px 12px; border: 2px solid #333333; background: #FFFFFF; font-size: 15px; font-weight: 600">You — on stage</span></div></div>
+</div>
+<div style="background: #333333; color: #FFFFFF; padding: 22px 24px; display: flex; flex-direction: column; gap: 10px; align-self: start"><span class="pix" style="font-size: 11px; color: #62D270">&gt; What you walk away with</span><span class="typed" style="font-size: 17px; line-height: 1.5; font-weight: 600">Your graduation, a pitch delivered live — and a real shot at Madaar funding your idea with a team and resources.</span></div>
+</div>
+</sc-if>
+</article>
+</div>
+</div>
+</section>
+
+<!-- ============ OPERATORS ============ -->
+<section id="operators" style="padding: 120px 24px; background: #333333; color: #FFFFFF; position: relative; overflow: hidden">
+<div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none">
+<div style="position: absolute; top: 0; right: 0; width: 96px; height: 96px; background: #3D3D3D"></div>
+<div style="position: absolute; top: 96px; right: 96px; width: 48px; height: 48px; background: #3D3D3D"></div>
+<div class="px" style="top: 48px; right: 192px; width: 24px; height: 24px"></div>
+</div>
+<div style="position: relative; max-width: 1280px; margin: 0 auto">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px">
+<div class="rv">
+<p class="pix" style="margin: 0 0 14px; font-size: 13px; color: #62D270">// In the room</p>
+<h2 style="margin: 0; font-size: clamp(38px, 5vw, 76px); line-height: .98; letter-spacing: -0.04em; font-weight: 800; max-width: 860px">Operators, <span class="hlg rv-hl">not lecturers.</span></h2>
+</div>
+<p class="rv" style="margin: 0; max-width: 400px; font-size: 17px; line-height: 1.55; color: #D6D6D6">Each one shows their actual day-to-day use of AI — live, in the room.</p>
+</div>
+
+<div style="margin-top: 64px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)); gap: 28px 24px">
+<article class="spk rv" style="display: flex; flex-direction: column; gap: 16px">
+<div class="ph" style="position: relative; aspect-ratio: 1 / 1; background: #444444; border: 2px solid #62D270; overflow: hidden; display: flex; align-items: flex-end; justify-content: flex-end; padding: 16px"><img src="./assets/c4194009059b8b8f277e5d0ad55da64f.jpg" alt="Eng. Ali Ramadan" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block"><span class="pix" style="position: relative; font-size: 11px; padding: 4px 8px; background: #333333; color: #62D270">All sessions</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 22px; font-weight: 700; letter-spacing: -0.02em">Eng. Ali Ramadan</span><span style="font-size: 15px; color: #62D270; font-weight: 600">Instructor · Software Development PM at Themiify</span><span style="font-size: 14px; line-height: 1.55; color: #D6D6D6">5+ years building and leading eCommerce web projects for the Saudi market on Salla, Zid and Shopify — from front-end developer to team lead, technical head and project manager. He uses AI across the whole product lifecycle, from requirements and planning to development, testing and evaluation.</span></div>
+</article>
+<article class="spk rv" style="display: flex; flex-direction: column; gap: 16px">
+<div class="ph" style="position: relative; aspect-ratio: 1 / 1; background: #444444; border: 2px solid #62D270; overflow: hidden; display: flex; align-items: flex-end; justify-content: flex-end; padding: 16px"><img src="./assets/dcc2d4b1622206cc3482365a18b66bc1.jpg" alt="Muhammad Almeslmani" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 10%; display: block"><span class="pix" style="position: relative; font-size: 11px; padding: 4px 8px; background: #333333; color: #62D270">Onboarding</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 22px; font-weight: 700; letter-spacing: -0.02em">Muhammad Almeslmani</span><span style="font-size: 15px; color: #62D270; font-weight: 600">General Manager, Madaar Solutions · CEO, Codra-Tech Academy</span><span style="font-size: 14px; line-height: 1.55; color: #D6D6D6">Focused on driving business and sales growth and SaaS innovation, with a proven track record in executing GTM strategies, scaling revenue, and turning data into high-value business opportunities.</span></div>
+</article>
+<article class="spk rv" style="display: flex; flex-direction: column; gap: 16px">
+<div class="ph" style="position: relative; aspect-ratio: 1 / 1; background: #444444; border: 2px solid #62D270; overflow: hidden; display: flex; align-items: flex-end; justify-content: flex-end; padding: 16px"><img src="./assets/f9fcc77d7596a3a029b6b31b5cd896d1.jpg" alt="Mr. Tamer" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; display: block"><span class="pix" style="position: relative; font-size: 11px; padding: 4px 8px; background: #333333; color: #62D270">Session 3</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 22px; font-weight: 700; letter-spacing: -0.02em">Mr. Tamer</span><span style="font-size: 15px; color: #62D270; font-weight: 600">CFO, Azzrk Group (KSA) · Founder, SCTG</span><span style="font-size: 14px; line-height: 1.55; color: #D6D6D6">Leads financial strategy, planning and governance across Azzrk Group, and founded SCTG for financial and management consulting. Formerly a financial advisor to companies in Cairo. MBA and CMA, with postgraduate studies at the American University in Cairo.</span></div>
+</article>
+<article class="spk rv" style="display: flex; flex-direction: column; gap: 16px">
+<div class="ph" style="position: relative; aspect-ratio: 1 / 1; background: #444444; border: 2px solid #62D270; overflow: hidden; display: flex; align-items: flex-end; justify-content: flex-end; padding: 16px"><img src="./assets/29d369c833f940a1d424d887c59c6913.jpg" alt="Dr. Amira" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 15%; display: block"><span class="pix" style="position: relative; font-size: 11px; padding: 4px 8px; background: #333333; color: #62D270">Session 3</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 22px; font-weight: 700; letter-spacing: -0.02em">Dr. Amira</span><span style="font-size: 15px; color: #62D270; font-weight: 600">Finance &amp; HR Director · PhD in Business Administration</span><span style="font-size: 14px; line-height: 1.55; color: #D6D6D6">Holds a PhD, an MBA and a DBA in Business Administration from the Faculty of Commerce, Mansoura University. A certified trainer accredited by Egypt's Supreme Council of Universities.</span></div>
+</article>
+<article class="spk rv" style="display: flex; flex-direction: column; gap: 16px">
+<div class="ph" style="position: relative; aspect-ratio: 1 / 1; background: #444444; border: 2px solid #62D270; overflow: hidden; display: flex; align-items: flex-end; justify-content: flex-end; padding: 16px"><img src="./assets/536c91d2e2b7fa115d88bd2b2710260d.jpg" alt="Mohammed Albanna" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; display: block"><span class="pix" style="position: relative; font-size: 11px; padding: 4px 8px; background: #333333; color: #62D270">Session 4</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 22px; font-weight: 700; letter-spacing: -0.02em">Mohammed Albanna</span><span style="font-size: 15px; color: #62D270; font-weight: 600">Marketing Manager &amp; Strategist</span><span style="font-size: 14px; line-height: 1.55; color: #D6D6D6">6+ years in performance marketing, e-commerce and strategy for Saudi and Gulf markets. He has worked with 50+ businesses, managed SAR 1M+ in ad spend across Meta, Google, TikTok and Snapchat, and mentored 120+ marketers. Today he brings AI into real marketing workflows — research, planning and performance analysis — with human judgment at the center.</span></div>
+</article>
+<article class="spk rv" style="display: flex; flex-direction: column; gap: 16px">
+<div class="ph" style="position: relative; aspect-ratio: 1 / 1; background: #444444; border: 2px solid #62D270; overflow: hidden; display: flex; align-items: flex-end; justify-content: flex-end; padding: 16px"><img src="./assets/b6410250f51d3069bca6ed6062749fe9.jpg" alt="Anas Elfiky" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 15%; display: block"><span class="pix" style="position: relative; font-size: 11px; padding: 4px 8px; background: #333333; color: #62D270">Session 4</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 22px; font-weight: 700; letter-spacing: -0.02em">Anas Elfiky</span><span style="font-size: 15px; color: #62D270; font-weight: 600">Creative Director · Multidisciplinary Visual Creative</span><span style="font-size: 14px; line-height: 1.55; color: #D6D6D6">A Fine Arts graduate who moved from retouching and set design into graphic design and marketing, including a year at Azraq. As Art Director on several campaigns and video productions, he shaped visual direction from concept to execution — and now uses AI to explore more ideas and scale production while keeping the brand consistent.</span></div>
+</article>
+<article class="spk rv" style="display: flex; flex-direction: column; gap: 16px">
+<div class="ph" style="position: relative; aspect-ratio: 1 / 1; background: #444444; border: 2px solid #62D270; overflow: hidden; display: flex; align-items: flex-end; justify-content: flex-end; padding: 16px"><img src="./assets/54f22db146b50bc9b29378ff30648fe2.jpg" alt="Kareem Gabr" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; display: block"><span class="pix" style="position: relative; font-size: 11px; padding: 4px 8px; background: #333333; color: #62D270">Session 4</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 22px; font-weight: 700; letter-spacing: -0.02em">Kareem Gabr</span><span style="font-size: 15px; color: #62D270; font-weight: 600">Media Production Specialist</span><span style="font-size: 14px; line-height: 1.55; color: #D6D6D6">12+ years in videography and 7+ in video editing, with 300+ clients across MENA — from full productions to social media ads. For the past two years he has been building AI into his filming and editing workflow.</span></div>
+</article>
+<article class="spk rv" style="display: flex; flex-direction: column; gap: 16px">
+<div class="ph" style="position: relative; aspect-ratio: 1 / 1; background: #444444; border: 2px solid #62D270; overflow: hidden; display: flex; align-items: flex-end; justify-content: flex-end; padding: 16px"><img src="./assets/726deaf5f2911c793b478169d9b1e1d4.jpg" alt="Ahmed Ayman" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; display: block"><span class="pix" style="position: relative; font-size: 11px; padding: 4px 8px; background: #333333; color: #62D270">Session 5</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 22px; font-weight: 700; letter-spacing: -0.02em">Ahmed Ayman</span><span style="font-size: 15px; color: #62D270; font-weight: 600">Sales Director · CMO &amp; Performance Marketer</span><span style="font-size: 14px; line-height: 1.55; color: #D6D6D6">8+ years across digital marketing, e-commerce, lead generation, sales and growth.</span></div>
+</article>
+<article class="spk rv" style="display: flex; flex-direction: column; gap: 16px">
+<div class="ph" style="position: relative; aspect-ratio: 1 / 1; background: #444444; border: 2px solid #62D270; overflow: hidden; display: flex; align-items: flex-end; justify-content: flex-end; padding: 16px"><img src="./assets/b977654c4c9b876f717b13ac05443f81.jpg" alt="Mohamed Elhanafy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; display: block"><span class="pix" style="position: relative; font-size: 11px; padding: 4px 8px; background: #333333; color: #62D270">Session 5</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 22px; font-weight: 700; letter-spacing: -0.02em">Eng. Mohamed Elhanafy</span><span style="font-size: 15px; color: #62D270; font-weight: 600">Pitching &amp; Presentation Skills · Data &amp; ML</span><span style="font-size: 14px; line-height: 1.55; color: #D6D6D6">Computer Science background from Mansoura University, with machine learning training at NTI/ITIDA and ITI. A Top 10 finalist at IEEE Victoris 2025, he has held leadership roles in HR, PR and student activities alongside his technical experience.</span></div>
+</article>
+<article class="spk rv" style="display: flex; flex-direction: column; gap: 16px">
+<div class="ph" style="position: relative; aspect-ratio: 1 / 1; background: #444444; border: 2px solid #62D270; overflow: hidden; display: flex; align-items: flex-end; justify-content: flex-end; padding: 16px"><img src="./assets/b07252668cb06c8dca95c3a6d8909065.jpg" alt="Panagiotis Solinaras" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; display: block"><span class="pix" style="position: relative; font-size: 11px; padding: 4px 8px; background: #333333; color: #62D270">Session 5</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 22px; font-weight: 700; letter-spacing: -0.02em">Panagiotis Solinaras</span><span style="font-size: 15px; color: #62D270; font-weight: 600">Business English</span><span style="font-size: 14px; line-height: 1.55; color: #D6D6D6">Panos studied accounting &amp; finance and came to Mansoura out of curiosity and a love of learning, looking for the next step in his career. He loves meeting new people — and is looking forward to meeting all of you.</span></div>
+</article>
+<article class="spk rv" style="display: flex; flex-direction: column; gap: 16px">
+<div class="ph" style="position: relative; aspect-ratio: 1 / 1; background: #444444; border: 2px solid #62D270; overflow: hidden; display: flex; align-items: flex-end; justify-content: flex-end; padding: 16px"><img src="./assets/bfbc2ba6e19cc528884de99cbfa5df95.jpg" alt="Eng. Huda Saleh" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; display: block"><span class="pix" style="position: relative; font-size: 11px; padding: 4px 8px; background: #333333; color: #62D270">Session 6</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 22px; font-weight: 700; letter-spacing: -0.02em">Eng. Huda Saleh</span><span style="font-size: 15px; color: #62D270; font-weight: 600">Project Manager, Madaar Solutions · Operations Manager, Codra-Tech Academy</span><span style="font-size: 14px; line-height: 1.55; color: #D6D6D6">Engineer and project manager with 4+ years leading projects across electrical and software engineering, embedded systems, UX/UI, web and AI — including AI-powered electrical projects. A former lecturer at the Faculty of Engineering and ITI Knowledge City and a graduation-project mentor, she connects technical depth with clear execution.</span></div>
+</article>
+<article class="spk rv" style="display: flex; flex-direction: column; gap: 16px">
+<div class="ph" style="position: relative; aspect-ratio: 1 / 1; background: #444444; border: 2px solid #62D270; overflow: hidden; display: flex; align-items: flex-end; justify-content: flex-end; padding: 16px"><img src="./assets/02abde1a73683b1180065ebdd374699f.jpg" alt="Eng. Muhammad Atef" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; display: block"><span class="pix" style="position: relative; font-size: 11px; padding: 4px 8px; background: #62D270; color: #333333">Guest of honor · S6</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 22px; font-weight: 700; letter-spacing: -0.02em">Eng. Muhammad Atef</span><span style="font-size: 15px; color: #62D270; font-weight: 600">Guest of Honor · Senior AI Engineer at e&amp; Egypt</span><span style="font-size: 14px; line-height: 1.55; color: #D6D6D6">Specialist in AI-powered apps, joining the final session to hear the interns' pitches live.</span></div>
+</article>
+<article class="spk rv" style="display: flex; flex-direction: column; gap: 16px">
+<div class="ph" style="aspect-ratio: 1 / 1; background: #62D270; border: 2px solid #62D270; display: flex; flex-direction: column; justify-content: space-between; padding: 16px; color: #333333"><img src="./assets/5a849863878f4f07c2ec6f4dd838d3ed.png" alt="" style="width: 100%; height: auto; display: block"><span style="font-size: 26px; font-weight: 800; line-height: 1.05; letter-spacing: -0.03em">And on the final day — you.</span></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 22px; font-weight: 700; letter-spacing: -0.02em">The Interns</span><span style="font-size: 15px; color: #D6D6D6">Pitching live · Session 6</span></div>
+</article>
+</div>
+</div>
+</section>
+
+<!-- ============ WHY ============ -->
+<section id="why" style="position: relative; padding: 120px 24px; background: #62D270; border-bottom: 2px solid #333333; overflow: hidden">
+<div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none">
+<div style="position: absolute; top: 0; left: 0; width: 120px; height: 120px; background: #57C265"></div>
+<div style="position: absolute; top: 120px; left: 120px; width: 60px; height: 60px; background: #57C265"></div>
+<div style="position: absolute; bottom: 0; right: 0; width: 160px; height: 80px; background: #57C265"></div>
+<div style="position: absolute; bottom: 80px; right: 80px; width: 80px; height: 80px; background: #57C265"></div>
+</div>
+<div style="position: relative; max-width: 1280px; margin: 0 auto">
+<div class="rv">
+<p class="pix" style="margin: 0 0 14px; font-size: 13px">// Why this, not another AI course</p>
+<h2 style="margin: 0; font-size: clamp(38px, 5vw, 76px); line-height: .98; letter-spacing: -0.04em; font-weight: 800; max-width: 1000px">Dense by design. <span class="hl rv-hl">Led by people who actually use it.</span></h2>
+</div>
+<div style="margin-top: 64px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 24px">
+<article class="card rv" style="background: #FFFFFF; border: 2px solid #333333; padding: 32px; display: flex; flex-direction: column; gap: 18px">
+<span class="pix" style="font-size: 12px">01</span>
+<h3 style="margin: 0; font-size: 30px; line-height: 1.05; letter-spacing: -0.03em; font-weight: 800">Operators, not lecturers</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3D3D3D">A CFO, a Finance &amp; HR director, a marketer, a creative director, a sales lead, a builder — each showing their actual day-to-day use of AI, live.</p>
+</article>
+<article class="card rv" style="background: #FFFFFF; border: 2px solid #333333; padding: 32px; display: flex; flex-direction: column; gap: 18px">
+<span class="pix" style="font-size: 12px">02</span>
+<h3 style="margin: 0; font-size: 30px; line-height: 1.05; letter-spacing: -0.03em; font-weight: 800">No wasted sessions</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3D3D3D">Six sessions, 90 minutes each, over two weeks. Every single one ends with something you keep — a vault, a framework, a pitch.</p>
+</article>
+<article class="card rv" style="background: #333333; color: #FFFFFF; border: 2px solid #333333; padding: 32px; display: flex; flex-direction: column; gap: 18px">
+<span class="pix" style="font-size: 12px; color: #62D270">03</span>
+<h3 style="margin: 0; font-size: 30px; line-height: 1.05; letter-spacing: -0.03em; font-weight: 800">A real finish line</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #E0E0E0">You don't end with a certificate and a shrug. You end on stage, pitching your own idea — with a real shot at Madaar funding it.</p>
+</article>
+</div>
+</div>
+</section>
+
+<!-- ============ GRADUATE / CLOSING ============ -->
+<section id="graduate" style="position: relative; padding: 140px 24px 0; background: #333333; color: #FFFFFF; overflow: hidden">
+<div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none">
+<div style="position: absolute; top: 0; left: 0; width: 140px; height: 140px; background: #3D3D3D"></div>
+<div style="position: absolute; top: 140px; left: 140px; width: 70px; height: 70px; background: #3D3D3D"></div>
+<div style="position: absolute; bottom: 220px; right: 0; width: 180px; height: 180px; background: #3D3D3D"></div>
+<div style="position: absolute; bottom: 400px; right: 180px; width: 90px; height: 90px; background: #3D3D3D"></div>
+<div class="px" style="top: 210px; left: 210px; width: 35px; height: 35px"></div>
+<div class="px c" style="bottom: 490px; right: 270px; width: 28px; height: 28px"></div>
+</div>
+<div style="position: relative; max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center">
+<p class="pix rv" style="margin: 0 0 22px; font-size: 13px; color: #62D270">Stage 06 — Graduate</p>
+<h2 class="rv" style="margin: 0; font-size: clamp(54px, 8.6vw, 136px); line-height: .9; letter-spacing: -0.05em; font-weight: 800">Walk in curious.<br><span class="hlg">Walk out pitching.</span></h2>
+<p class="rv" style="margin: 34px 0 0; font-size: clamp(28px, 3.2vw, 44px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.3"><span style="background: #FFFFFF; color: #333333; padding: 0 .2em">Codra Forward</span></p>
+<p class="rv" style="margin: 26px 0 0; font-size: 19px; line-height: 1.6; max-width: 640px; color: #D6D6D6">Two weeks. Six sessions. One pitch — delivered live, with Madaar in the room and the strongest idea in line for a team and resources.</p>
+
+<div class="rv" style="margin-top: 44px; width: 100%; max-width: 900px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); border: 2px solid #62D270">
+<div style="padding: 22px; display: flex; flex-direction: column; gap: 6px; text-align: left; border-right: 1px solid #555555"><span class="pix" style="font-size: 11px; color: #62D270">Starts</span><span style="font-size: 20px; font-weight: 700">5 October 2026</span></div>
+<div style="padding: 22px; display: flex; flex-direction: column; gap: 6px; text-align: left; border-right: 1px solid #555555"><span class="pix" style="font-size: 11px; color: #62D270">Rhythm</span><span style="font-size: 20px; font-weight: 700">3× a week · 90 min</span></div>
+<div style="padding: 22px; display: flex; flex-direction: column; gap: 6px; text-align: left; border-right: 1px solid #555555"><span class="pix" style="font-size: 11px; color: #62D270">Where</span><span style="font-size: 20px; font-weight: 700">Adan, Burj Alhamama — 3rd floor</span></div>
+<div style="padding: 22px; display: flex; flex-direction: column; gap: 6px; text-align: left"><span class="pix" style="font-size: 11px; color: #62D270">Seats</span><span style="font-size: 20px; font-weight: 700">25 seats only</span></div>
+</div>
+
+<div class="rv" style="margin-top: 40px; display: flex; flex-wrap: wrap; justify-content: center; gap: 14px">
+<a class="btn btn-d" href="#curriculum" style="display: inline-flex; align-items: center; gap: 12px; min-height: 60px; padding: 0 34px; background: rgba(0,0,0,0); color: #FFFFFF; font-weight: 600; font-size: 18px; border: 2px solid #FFFFFF">Review the sessions</a>
+</div>
+
+<img class="rv-pop" src="./assets/72fc74caad5faa3597ca1f0ee2723358.png" alt="Codra Tech" style="margin-top: 110px; width: min(320px, 70%); height: auto; display: block">
+<p class="rv" style="margin: 26px 0 0; font-size: 17px; color: #D6D6D6">Where capability becomes technology. In partnership with Madaar Venture Studio.</p>
+</div>
+
+<div style="position: relative; margin-top: 80px; border-top: 1px solid #4A4A4A">
+<div style="max-width: 1280px; margin: 0 auto; padding: 22px 0 28px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 13px; color: #BDBDBD">
+<span>Codra·Tech</span>
+<span class="pix" style="font-size: 11px">2026</span>
+</div>
+</div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":7400}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const st = this.state || {};
+    const open = (typeof st.open === 'number' || st.open === null) ? st.open : 0;
+    const v = {};
+    for (let i = 0; i < 6; i++) {
+      const isOpen = open === i;
+      v['o' + i] = isOpen;
+      v['ex' + i] = isOpen ? 'true' : 'false';
+      v['r' + i] = isOpen ? '180deg' : '0deg';
+      v['bg' + i] = isOpen ? '#F1FAF2' : '#FFFFFF';
+      v['t' + i] = () => this.setState({ open: isOpen ? null : i });
+      v['go' + i] = () => this.setState({ open: i });
+    }
+    return v;
+  }
+}
+</script>
+</body>
+</html>
